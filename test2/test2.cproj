@@ -139,13 +139,13 @@
     <Compile Include="keypad.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="cust_lcd4.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="LCD_I2C.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="motors.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

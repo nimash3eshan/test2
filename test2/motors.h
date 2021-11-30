@@ -7,27 +7,27 @@ void mixpartDCmotor();
 
 //int main(void)
 //{
-	//
-	////int period;
-	//DDRA=0x00;
-	//DDRC = 0xFF; /* Make PORTA lower pins as output */
-	//DDRD = 0xFF; //PORTD as Output
-	//PORTC=0X00;
-	//PORTD = 0x00;
-	//PORTA=0XFF;
-	//
-	//
-	//
-	//pushingpartStepper();
-	//while(1)	{					// Push a tray on to the convey belt
-		//if (0!=(PINA &(1<<PA0)))					// IR Sensor detects the tray or not
-		//{
-			//mixpartStepper();						// stepper motor at mixing position rotates
-			//
-		//}
-	//}
-	//
-	//
+//
+////int period;
+//DDRA=0x00;
+//DDRC = 0xFF; /* Make PORTA lower pins as output */
+//DDRD = 0xFF; //PORTD as Output
+//PORTC=0X00;
+//PORTD = 0x00;
+//PORTA=0XFF;
+//
+//
+//
+//pushingpartStepper();
+//while(1)	{					// Push a tray on to the convey belt
+//if (0!=(PINA &(1<<PA0)))					// IR Sensor detects the tray or not
+//{
+//mixpartStepper();						// stepper motor at mixing position rotates
+//
+//}
+//}
+//
+//
 //}
 
 void pushingpartStepper()
@@ -144,11 +144,11 @@ void mixpartDCmotor()
 	PORTD = 0x02;
 	_delay_ms(2000);
 	PORTD = 0x03;
-	// 		_delay_ms(2000);
-	// 		PORTD = 0x01;
-	// 		_delay_ms(2000);
-	// 		PORTD = 0x00;
-	// 		_delay_ms(2000);
+	_delay_ms(2000);
+	PORTD = 0x01;
+	_delay_ms(2000);
+	PORTD = 0x00;
+	_delay_ms(2000);
 	
 	//}
 	

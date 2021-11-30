@@ -24,6 +24,9 @@
 //Keypad Header Files
 #include "keypad.h"
 
+//Motor Header Files
+#include "motors.h"
+
 
 //Global Variable
 int num_trays = 0;
@@ -57,6 +60,8 @@ int main(void){
 		}
 		
 		//Getting the user input for the number of trays
+		redo_trays:
+		
 		lcd_cmd(0x01);
 		lcd_cmd(0x80);
 		lcd_msg("Number of trays?");
@@ -86,19 +91,32 @@ int main(void){
 			lcd_msg(temp);
 			strcpy(&str[digs],temp);
 			digs++;
-		} while (strcmp (temp, " ")!=0);
+		} while ((strcmp (temp, " ")!=0)|(atoi(str)==0));
 
 		num_trays = atoi(str);
 		lcd_cmd(0x01);
 		lcd_cmd(0x80);
 		
+		if (num_trays >=20)
+		{
+			lcd_msg("Enter a value less than 20");
+			_delay_ms(500);
+			for(int i = 0; i<27 ; i++)
+			{
+				lcd_cmd(0x18);
+				_delay_ms(100);
+			}
+			goto redo_trays;
+		}
+		
 		//Getting the volume of trays in milliliters
-		lcd_msg("Number of trays?");
+		redo_vol:
+		lcd_msg("Vol. of a tray (ml)");
 		lcd_cmd(0xC0);
 		lcd_cmd(0x0F);
-		char temp[10];
-		char str[10];
-		int digs=0;
+		strcpy(temp,"");
+		strcpy(str,"");
+		digs=0;
 		do
 		{
 			strcpy(temp,keyfind());
@@ -119,11 +137,33 @@ int main(void){
 			lcd_msg(temp);
 			strcpy(&str[digs],temp);
 			digs++;
-		} while (strcmp (temp, " ")!=0);
+		} while ((strcmp (temp, " ")!=0)|(atoi(str)==0));
 
 		vol = atoi(str);
 		lcd_cmd(0x01);
 		lcd_cmd(0x80);
+		
+		if (vol >=5000)
+		{
+			lcd_msg("Enter a value less than 5000");
+			_delay_ms(500);
+			for(int i = 0; i<28 ; i++)
+			{
+				lcd_cmd(0x18);
+				_delay_ms(100);
+			}
+			goto redo_vol;
+		}
+		
+		/*--The code required for calculation of the volumes 
+		of each liquid and pH Values--*/
+		
+		/*--Code for Motors of the tray Dispenser to push trays
+		onto the conveyor belt--*/
+		
+		/*--Code for the Conveyor belt and the IR sensor to--*/
+		
+		/*----*/
 			
 	}
 }
