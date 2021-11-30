@@ -1,82 +1,133 @@
+/*
+* main.c
+*
+* Created: 11/20/2021 11:23:38 PM
+*  Author: W.K. Milan Swanthra
+*/
+
+
+//Libraries used in the project
 #include <avr/io.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <util/delay.h>
 
-#define F_CPU 1600000UL
-#include "cust_lcd4.h"
+#define F_CPU 16000000UL
+
+/*Custom Header Files*/
+
+//LCD Header Files
+#include "i2c.h"
+#include "LCD_I2C.h"
+
+//Keypad Header Files
 #include "keypad.h"
 
+
+//Global Variable
 int num_trays = 0;
 float vol = 0;
 
-int main(void)
-{
-	unsigned char data0[]="Number of trays?";
-	unsigned char data1[]="Vol. of tray (L)?";
+int main(void){
 	
-	int i=0,x;
-	DDRB=0xFF;
+	/*---Function for initializing the i2c module
+	and the LCD Display---*/
+	i2c_init();
+	i2c_start();
+	i2c_write(0x70);
 	lcd_init();
 	
-	while(data0[i]!='\0')
-	{
-		dis_data(data0[i]);
-		_delay_ms(10);
-		i++;
-	}
-	
-	dis_cmd(0xC0);
-	
-	char key;
-	do 
-	{
-		key = keyfind();
-		if (key == ' ')
+	//Main Program Loop
+	while(1){
+		//Displaying the starting information
+		lcd_cmd(0x80);
+		lcd_msg("Rubber Solution Mixer 1.0");
+		lcd_cmd(0xC0);
+		lcd_cmd(0x14);
+		lcd_cmd(0x14);
+		lcd_cmd(0x14);
+		lcd_cmd(0x14);
+		lcd_msg("Welcome");
+		_delay_ms(500);
+		for(int i = 0; i<27 ; i++)
 		{
-			break;
-		}else if (key == '=')
-		{
-			dis_cmd(0x04);
-			dis_data(' ');
-			dis_cmd(0x06);
-		}else{
-			dis_data(key);
+			lcd_cmd(0x18);
+			_delay_ms(100);
 		}
 		
-				
-	} while (1);
-	
-	dis_cmd(0x01);
-	dis_cmd(0x06);
-	
-	i=0;
-	while(data1[i]!='\0')
-	{
-		dis_data(data1[i]);
-		_delay_ms(10);
-		i++;
+		//Getting the user input for the number of trays
+		lcd_cmd(0x01);
+		lcd_cmd(0x80);
+		lcd_msg("Number of trays?");
+		lcd_cmd(0xC0);
+		lcd_cmd(0x0F);
+		
+		char temp[10];
+		char str[10];
+		int digs=0;
+		do
+		{
+			strcpy(temp,keyfind());
+			
+			if (strcmp (temp, "=")==0){
+				if (digs>=1)
+				{
+					lcd_cmd(0x10);
+					lcd_msg(" ");
+					lcd_cmd(0x10);
+					lcd_cmd(0x10);
+					lcd_cmd(0x14);
+					digs--;
+					strcpy(&str[digs]," ");
+				}
+				continue;
+			}
+			lcd_msg(temp);
+			strcpy(&str[digs],temp);
+			digs++;
+		} while (strcmp (temp, " ")!=0);
+
+		num_trays = atoi(str);
+		lcd_cmd(0x01);
+		lcd_cmd(0x80);
+		
+		//Getting the volume of trays in milliliters
+		lcd_msg("Number of trays?");
+		lcd_cmd(0xC0);
+		lcd_cmd(0x0F);
+		char temp[10];
+		char str[10];
+		int digs=0;
+		do
+		{
+			strcpy(temp,keyfind());
+			
+			if (strcmp (temp, "=")==0){
+				if (digs>=1)
+				{
+					lcd_cmd(0x10);
+					lcd_msg(" ");
+					lcd_cmd(0x10);
+					lcd_cmd(0x10);
+					lcd_cmd(0x14);
+					digs--;
+					strcpy(&str[digs]," ");
+				}
+				continue;
+			}
+			lcd_msg(temp);
+			strcpy(&str[digs],temp);
+			digs++;
+		} while (strcmp (temp, " ")!=0);
+
+		vol = atoi(str);
+		lcd_cmd(0x01);
+		lcd_cmd(0x80);
+			
 	}
-	
-	
-	
-	//i=0;
-	//while(data1[i]!='\0')
-	//{
-		//dis_data(data1[i]);
-		//_delay_ms(100);
-		//i++;
-	//}
-	
-	//while(1)
-	//{
-		//for(x=0;x<16;x++)
-		//{
-			//dis_cmd(0x1c); 
-			//_delay_ms(100);
-		//}
-	//}
-	
 }
+
 
 
 
