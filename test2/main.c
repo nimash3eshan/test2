@@ -161,16 +161,18 @@ int main(void){
 		/*--The code required for calculation of the volumes 
 		of each liquid and pH Values--*/
 		
+		/*--Start conveyor belt--*/
 		/*--Code for Motors of the tray Dispenser to push trays
 		onto the conveyor belt--*/
-		acvt_lwr_mixr();
-		_delay_ms(500);
-		
 		acvt_trayPsh();
 		_delay_ms(500);
 		
-		acvt_mixer();
-		_delay_ms(1000);
+		/*--Deactivating conveyor belt--*/
+		
+		acvt_lwr_mixr();
+		_delay_ms(500);
+		
+		
 		/*--Code for the Conveyor belt and the IR sensor to--*/
 		
 		/*----*/

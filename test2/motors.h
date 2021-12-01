@@ -42,6 +42,8 @@ void acvt_lwr_mixr(){
 	stpr_init();
 	stpr_clk(2,4);
 	_delay_ms(1000);
+	acvt_mixer();
+	_delay_ms(1000);
 	stpr_aclk(2,4);
 }
 

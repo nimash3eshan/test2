@@ -316,20 +316,20 @@ END GROUP
  .text.acvt_trayPsh
                 0x000005da       0x30 main.o
                 0x000005da                acvt_trayPsh
- .text.acvt_lwr_mixr
-                0x0000060a       0x30 main.o
-                0x0000060a                acvt_lwr_mixr
- .text.dc_init  0x0000063a       0x10 main.o
-                0x0000063a                dc_init
- .text.dc_stp   0x0000064a        0x8 main.o
-                0x0000064a                dc_stp
- .text.dc_clk   0x00000652       0x26 main.o
-                0x00000652                dc_clk
+ .text.dc_init  0x0000060a       0x10 main.o
+                0x0000060a                dc_init
+ .text.dc_stp   0x0000061a        0x8 main.o
+                0x0000061a                dc_stp
+ .text.dc_clk   0x00000622       0x26 main.o
+                0x00000622                dc_clk
  .text.acvt_mixer
-                0x00000678        0xe main.o
-                0x00000678                acvt_mixer
- .text.main     0x00000686      0x2cc main.o
-                0x00000686                main
+                0x00000648        0xe main.o
+                0x00000648                acvt_mixer
+ .text.acvt_lwr_mixr
+                0x00000656       0x46 main.o
+                0x00000656                acvt_lwr_mixr
+ .text.main     0x0000069c      0x2b6 main.o
+                0x0000069c                main
  .text.avr-libc
                 0x00000952       0x3c f:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(atoi.o)
                 0x00000952                atoi
@@ -480,10 +480,10 @@ END GROUP
  .debug_abbrev  0x00000000      0x4a3 F:/Software/Atmel Studio 7/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_abbrev  0x000004a3      0x256 main.o
 
-.debug_line     0x00000000      0xcc4
+.debug_line     0x00000000      0xcc6
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 F:/Software/Atmel Studio 7/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_line    0x00000116      0xbae main.o
+ .debug_line    0x00000116      0xbb0 main.o
 
 .debug_frame    0x00000000      0x1d0
  *(.debug_frame)
