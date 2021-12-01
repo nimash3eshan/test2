@@ -1,5 +1,5 @@
 /*
-* IncFile1.h
+* keypad.h
 *
 * Created: 11/26/2021 11:23:38 PM
 *  Author: Admin
@@ -13,10 +13,11 @@
 #define KEY_DDR		DDRD
 #define KEY_PIN		PIND
 
-unsigned char colloc, rowloc;
 
 char* keyfind()
 {
+	unsigned char colloc, rowloc;
+
 	while(1)
 	{
 		KEY_DDR = 0xF0;           /*  port direction  */
@@ -137,4 +138,4 @@ char* keyfind()
 				
 			}
 		}
-}
+	}

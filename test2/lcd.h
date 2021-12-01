@@ -25,11 +25,11 @@ void lcd_rig_sh();			//----Right Shifting Function
 
 void toggle()
 {
-	TWDR |= 0x02;					//---PIN En de la LCD en = 1;  -----Latching data in to LCD data register using High to Low signal
-	TWCR = (1<<TWINT) | (1<<TWEN);	//---Enable I2C and clear interrupt- Esta linea y la siguiente simepre van despues de querer mandar un coamndo por TDWR
-	while  (!(TWCR &(1<<TWINT)));	//---Simepre poner despues de la linea anterior al mandar datos por TWDR
+	TWDR |= 0x02;					//-----Latching data in to LCD data register using High to Low signal
+	TWCR = (1<<TWINT) | (1<<TWEN);	//---Enable I2C and clear interrupt
+	while  (!(TWCR &(1<<TWINT)));	
 	delay(1);
-	TWDR &= ~0x02;					//---PIN del Enable de la LCD en = 0;
+	TWDR &= ~0x02;					
 	TWCR = (1<<TWINT) | (1<<TWEN);	//---Enable I2C and clear interrupt
 	while  (!(TWCR &(1<<TWINT)));
 }

@@ -18,7 +18,7 @@ main.d main.o: .././main.c \
  f:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  f:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  f:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- .././i2c.h .././LCD_I2C.h .././keypad.h
+ .././i2c.h .././lcd.h .././keypad.h .././motors.h
 
 f:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -60,6 +60,8 @@ f:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\m
 
 .././i2c.h:
 
-.././LCD_I2C.h:
+.././lcd.h:
 
 .././keypad.h:
+
+.././motors.h:

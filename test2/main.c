@@ -19,7 +19,7 @@
 
 //LCD Header Files
 #include "i2c.h"
-#include "LCD_I2C.h"
+#include "lcd.h"
 
 //Keypad Header Files
 #include "keypad.h"
@@ -29,8 +29,7 @@
 
 
 //Global Variable
-int num_trays = 0;
-float vol = 0;
+
 
 int main(void){
 	
@@ -43,6 +42,10 @@ int main(void){
 	
 	//Main Program Loop
 	while(1){
+		
+		uint8_t num_trays = 0;
+		uint8_t vol = 0;
+		
 		//Displaying the starting information
 		lcd_cmd(0x80);
 		lcd_msg("Rubber Solution Mixer 1.0");
@@ -160,7 +163,14 @@ int main(void){
 		
 		/*--Code for Motors of the tray Dispenser to push trays
 		onto the conveyor belt--*/
+		acvt_lwr_mixr();
+		_delay_ms(500);
 		
+		acvt_trayPsh();
+		_delay_ms(500);
+		
+		acvt_mixer();
+		_delay_ms(1000);
 		/*--Code for the Conveyor belt and the IR sensor to--*/
 		
 		/*----*/

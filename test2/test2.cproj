@@ -139,7 +139,7 @@
     <Compile Include="keypad.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="LCD_I2C.h">
+    <Compile Include="lcd.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
