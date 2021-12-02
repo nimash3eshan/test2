@@ -5,7 +5,7 @@
 #define  F_CPU 16000000UL
 
 void i2c_init(){
-	TWBR = 0x62;		//	Baud rate is set by calculating 
+	TWBR = 0x62;		//Baud rate is set by calculating 
 	TWCR = (1<<TWEN);	//Enable I2C
 	TWSR = 0x00;		//Pre scaler set to 1 
 

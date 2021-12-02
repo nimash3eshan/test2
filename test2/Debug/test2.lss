@@ -323,13 +323,13 @@ Disassembly of section .text:
 
 00000250 <keyfind>:
  250:	80 ef       	ldi	r24, 0xF0	; 240
- 252:	81 bb       	out	0x11, r24	; 17
+ 252:	8a bb       	out	0x1a, r24	; 26
  254:	8f ef       	ldi	r24, 0xFF	; 255
- 256:	82 bb       	out	0x12, r24	; 18
+ 256:	8b bb       	out	0x1b, r24	; 27
  258:	8f e0       	ldi	r24, 0x0F	; 15
- 25a:	82 bb       	out	0x12, r24	; 18
+ 25a:	8b bb       	out	0x1b, r24	; 27
  25c:	00 00       	nop
- 25e:	80 b3       	in	r24, 0x10	; 16
+ 25e:	89 b3       	in	r24, 0x19	; 25
  260:	8f 70       	andi	r24, 0x0F	; 15
  262:	8f 30       	cpi	r24, 0x0F	; 15
  264:	c9 f7       	brne	.-14     	; 0x258 <keyfind+0x8>
@@ -339,7 +339,7 @@ Disassembly of section .text:
  26c:	f1 f7       	brne	.-4      	; 0x26a <keyfind+0x1a>
  26e:	00 c0       	rjmp	.+0      	; 0x270 <keyfind+0x20>
  270:	00 00       	nop
- 272:	80 b3       	in	r24, 0x10	; 16
+ 272:	89 b3       	in	r24, 0x19	; 25
  274:	8f 70       	andi	r24, 0x0F	; 15
  276:	8f 30       	cpi	r24, 0x0F	; 15
  278:	b1 f3       	breq	.-20     	; 0x266 <keyfind+0x16>
@@ -349,35 +349,35 @@ Disassembly of section .text:
  280:	f1 f7       	brne	.-4      	; 0x27e <keyfind+0x2e>
  282:	00 c0       	rjmp	.+0      	; 0x284 <keyfind+0x34>
  284:	00 00       	nop
- 286:	80 b3       	in	r24, 0x10	; 16
+ 286:	89 b3       	in	r24, 0x19	; 25
  288:	8f 70       	andi	r24, 0x0F	; 15
  28a:	8f 30       	cpi	r24, 0x0F	; 15
  28c:	61 f3       	breq	.-40     	; 0x266 <keyfind+0x16>
  28e:	8f ee       	ldi	r24, 0xEF	; 239
- 290:	82 bb       	out	0x12, r24	; 18
+ 290:	8b bb       	out	0x1b, r24	; 27
  292:	00 00       	nop
- 294:	80 b3       	in	r24, 0x10	; 16
+ 294:	89 b3       	in	r24, 0x19	; 25
  296:	8f 70       	andi	r24, 0x0F	; 15
  298:	8f 30       	cpi	r24, 0x0F	; 15
  29a:	c1 f4       	brne	.+48     	; 0x2cc <keyfind+0x7c>
  29c:	8f ed       	ldi	r24, 0xDF	; 223
- 29e:	82 bb       	out	0x12, r24	; 18
+ 29e:	8b bb       	out	0x1b, r24	; 27
  2a0:	00 00       	nop
- 2a2:	80 b3       	in	r24, 0x10	; 16
+ 2a2:	89 b3       	in	r24, 0x19	; 25
  2a4:	8f 70       	andi	r24, 0x0F	; 15
  2a6:	8f 30       	cpi	r24, 0x0F	; 15
  2a8:	99 f4       	brne	.+38     	; 0x2d0 <keyfind+0x80>
  2aa:	8f eb       	ldi	r24, 0xBF	; 191
- 2ac:	82 bb       	out	0x12, r24	; 18
+ 2ac:	8b bb       	out	0x1b, r24	; 27
  2ae:	00 00       	nop
- 2b0:	80 b3       	in	r24, 0x10	; 16
+ 2b0:	89 b3       	in	r24, 0x19	; 25
  2b2:	8f 70       	andi	r24, 0x0F	; 15
  2b4:	8f 30       	cpi	r24, 0x0F	; 15
  2b6:	71 f4       	brne	.+28     	; 0x2d4 <keyfind+0x84>
  2b8:	8f e7       	ldi	r24, 0x7F	; 127
- 2ba:	82 bb       	out	0x12, r24	; 18
+ 2ba:	8b bb       	out	0x1b, r24	; 27
  2bc:	00 00       	nop
- 2be:	80 b3       	in	r24, 0x10	; 16
+ 2be:	89 b3       	in	r24, 0x19	; 25
  2c0:	8f 70       	andi	r24, 0x0F	; 15
  2c2:	8f 30       	cpi	r24, 0x0F	; 15
  2c4:	09 f4       	brne	.+2      	; 0x2c8 <keyfind+0x78>
