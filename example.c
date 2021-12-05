@@ -23,9 +23,10 @@ int main(void)
 {
 	DDRB=DDRB|(1<<3);
 	DDRB=DDRB|(1<<4);
-	DDRD = DDRD&~(1<<2);
+	DDRB=DDRB|(1<<1);
+	DDRB = DDRB&~(1<<2);
 	/*follow  output port use as a example to give output to display */
-	DDRD =DDRD|(1<<3);
+	DDRB =DDRB|(1<<5);
 	while(1)
 	{
 		ultrasonic1();
@@ -73,18 +74,18 @@ void depth()
 		
 
 	
-	PORTD |= 1<<PIND0;
+	PORTB |= 1<<PINB1;
 	_delay_us(15);
 
-	PORTD &= ~(1<<PIND0);
+	PORTB &= ~(1<<PINB1);
 	count_a = pulse/58;
 	if(count_a>=Sdepth)
 	{
-		PORTD=PORTD|(1<<3);
+		PORTB=PORTB|(1<<5);
 	}
 	else
 	{
-		PORTD=PORTD|(0<<3);
+		PORTB=PORTB|(0<<5);
 	}
 			
 
