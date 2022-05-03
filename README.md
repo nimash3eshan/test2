@@ -8,8 +8,8 @@
 * Create a pull request and merge the branch in the main after resolving any conflicts
 * If you face any problems when merging a branch watch [this video](https://youtu.be/9j0AOrO0dnw?t=1086) or contact me >_< 
 * Use the seperate folder named "Proteus files" to upload any proteus project files 
-* Use the seperate folder named "header files" to upload new or changed header files 
+* Use the seperate folder named "test2" to upload new or changed header files 
 
 ## Components that need to be completed
 * - [ ] Code for the Ultrasonic sensor (Detect the liquid levels once before the LCD Display starts)
-* - [ ] 
+* - [ ] Code for the calculation of the pH values and the rquired volumes
