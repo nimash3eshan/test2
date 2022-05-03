@@ -1,80 +1,132 @@
+/*
+* main.c
+*
+* Created: 11/20/2021 11:23:38 p. m.
+* Author : Group 30
+*/
+
+
+//Libraries used in the Project
 #include <avr/io.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <util/delay.h>
 
 #define F_CPU 1600000UL
-#include "cust_lcd4.h"
-#include "keypad.h"
 
-int num_trays = 0;
-float vol = 0;
+//-----------------------------Custom Header Files---------------------------------
+
+//Keypad
+#include "keypad.h"
+//Tray Pusher
+#include "Stepper_motors.h"
+//Mixer
+#include "dc.h"
+//pH Sensor
+#include "adc.h"
+//AC Motor
+#include "ToRelay.h"
+//Ultrasonic Sensor
+#include "sensor.h"
+//IR Sensor
+#include "IRSensor.h"
+//Flow Sensor
+#include "flowsensor.h"
+//Display
+#include "lcd_func.h"
+
+//Global Variables
+float   w_vol;
+float	l_vol;
+float	a_vol;
 
 int main(void)
 {
-	unsigned char data0[]="Number of trays?";
-	unsigned char data1[]="Vol. of tray (L)?";
+		
+	//Main Program Loop
 	
-	int i=0,x;
-	DDRB=0xFF;
-	lcd_init();
-	
-	while(data0[i]!='\0')
-	{
-		dis_data(data0[i]);
-		_delay_ms(10);
-		i++;
-	}
-	
-	dis_cmd(0xC0);
-	
-	char key;
-	do 
-	{
-		key = keyfind();
-		if (key == ' ')
+	while(1){
+		//------------------------------display on-----------------------------------
+		wlcm_msg();
+		int num_trays = num_tray();
+		int vol = tray_vol();
+		
+
+		//------------------------------ultrasonic-----------------------(In progress)
+		ultrasonic1();	//activate ultrasonic sensor in the water tank
+		if (!depth())	// Display a message if the liquid is empty
 		{
-			break;
-		}else if (key == '=')
-		{
-			dis_cmd(0x04);
-			dis_data(' ');
-			dis_cmd(0x06);
-		}else{
-			dis_data(key);
 		}
 		
-				
-	} while (1);
-	
-	dis_cmd(0x01);
-	dis_cmd(0x06);
-	
-	i=0;
-	while(data1[i]!='\0')
-	{
-		dis_data(data1[i]);
-		_delay_ms(10);
-		i++;
+		
+		ultrasonic2();	//activate ultrasonic sensor in the acid tank
+		if (!depth())	// Display a message if the liquid is empty
+		{
+		}
+		
+		
+		ultrasonic3();	//activate ultrasonic sensor in the latex tank
+		if (!depth())	// Display a message if the liquid is empty
+		{
+		}
+		
+		
+		//----------------------------------ph sensor--------------------------(in progress)
+		
+		ADC_Init();
+		
+		ADC_Read('B');
+		//calculate the volume of water,latex and acid needed
+		
+		//----------------------------calculation for ph value------------------------
+		
+		//--------------------------------conveyor start------------------------------
+		
+		switchOn();	//activate the relay switch to the AC motor
+		
+		//---------------------------------stepper push-------------------------------
+		
+		stprTrayPsh_init();	// initialize the stepper motors
+		stprTrayPsh_clk(2);	// rotate the stepper motors to push the tray onto the conveyor
+		
+		//--------------------------------Ir detector---------------------------------
+		
+		while(1){
+			if (act_IR())		//if the IR function returns a true value the conveyor will stop
+			{
+				switchOff();
+				break;
+			}
+		}
+		
+		//--------------------------------stepper pull--------------------------------
+		
+		stprTrayPsh_init();	// initialize the stepper motors
+		stprTrayPsh_aclk(2);// rotate the stepper motors to pull the handle
+
+		
+		//----------------------------tray holder down (mixer)----------------------------
+		
+		stprMix_init(); //initiate the stepper motor
+		stprMix_clk(2);	// rotate the stepper motor to lower the mixer
+		
+		//----------------------------liquid pumps {flow sensor}--------------------------
+		pump_w(w_vol);
+		pump_l(l_vol);
+		pump_a(a_vol);
+		
+		//---------------------------------DC motor (Mixer)-------------------------------
+		acvt_mixer();
+		
+		//------------------------------tray holder up (mixer)----------------------------
+		
+		stprMix_init();//initiate the stepper motor
+		stprMix_aclk(2);// rotate the stepper motor to lower the mixer;
+		
+		//------------------------------conveyor belt start-------------------------------
+		switchOn();
 	}
-	
-	
-	
-	//i=0;
-	//while(data1[i]!='\0')
-	//{
-		//dis_data(data1[i]);
-		//_delay_ms(100);
-		//i++;
-	//}
-	
-	//while(1)
-	//{
-		//for(x=0;x<16;x++)
-		//{
-			//dis_cmd(0x1c); 
-			//_delay_ms(100);
-		//}
-	//}
 	
 }
 
