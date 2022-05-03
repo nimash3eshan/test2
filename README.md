@@ -1,6 +1,6 @@
 # Rubber Mixer v1.0
-![GitHub language count](https://img.shields.io/github/languages/count/{username}/{repo-name})
-![GitHub top language](https://img.shields.io/github/languages/top/{username}/{repo-name}?color=yellow)
+![GitHub language count](https://img.shields.io/github/languages/count/wkmilanswanthra/test2)
+![GitHub top language](https://img.shields.io/github/languages/top/wkmilanswanthra/test2?color=yellow)
 ## :eyes: Special considerations when uploading code
 * Always create a **_new branch_** to upload new and edited code.
 * Add a well written description to each commit
