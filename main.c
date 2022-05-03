@@ -1,4 +1,4 @@
-/*
+
  * GccApplication10.c
  *
  * Created: 5/2/2022 8:15:36 AM
@@ -26,8 +26,6 @@ int main()
 
 	return 0;
 }
-
-
 
 
 

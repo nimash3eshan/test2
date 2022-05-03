@@ -14,11 +14,11 @@ void switchOn();
 void switchOff();
 
 
-int main(void)
-{
+/*int main(void)
+{*/
     /* Replace with your application code */
 	/*configure port A0 as a output port */
-	DDRA =(1<<Relay);
+	/*DDRA =(1<<Relay);
 	
     while (1) 
     {
@@ -28,11 +28,11 @@ int main(void)
 		_delay_ms(5000);
     }
 	return 0;
-}
+}*/
 void switchOn()
 {
 	PORTA =(1<<Relay);
-}
+};
 void switchOff()
 {
 	PORTA=(1<<Relay);
