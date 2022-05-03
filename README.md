@@ -12,4 +12,4 @@
 
 ## Components that need to be completed
 * - [ ] Code for the Ultrasonic sensor (Detect the liquid levels once before the LCD Display starts)
-* - [ ] Code for the calculation of the pH values and the rquired volumes
+* - [ ] Code for the calculation of pH values and required volumes
