@@ -25,7 +25,7 @@ void act_IR(){
 	while(1)	{
 		if (0!=(IR_PIN &(1<<IR_ConnectPIN)))	// IR Sensor detects the tray or not
 		{
-			acvt_lwr_mixr();		// stepper motor at mixing position rotates
+			return 1;
 		}
 	}
 }
