@@ -2,7 +2,8 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/wkmilanswanthra/test2)
 ![GitHub top language](https://img.shields.io/github/languages/top/wkmilanswanthra/test2?color=yellow)
 ## :eyes: Special considerations when uploading code
-* Always create a **_new branch_** to upload new and edited code.
+* Always create a **_new branch_** to upload new and edited code
+* Fetch origin before making any changes to your code
 * Add a well written description to each commit
 * Mention every single change done
 * Create a pull request and merge the branch in the main after resolving any conflicts
