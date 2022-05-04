@@ -6,7 +6,7 @@
 * Add a well written description to each commit
 * Mention every single change done
 * Create a pull request and merge the branch in the main after resolving any conflicts
-* If you face any problems when merging a branch watch [this video](https://youtu.be/9j0AOrO0dnw?t=1086) or contact me >_< 
+* If you face any problems when merging a branch watch [this video](https://youtu.be/9j0AOrO0dnw?t=1086) or contact me :full_moon_with_face: 
 * Use the seperate folder named "Proteus files" to upload any proteus project files 
 * Use the seperate folder named "test2" to upload new or changed header files 
 
